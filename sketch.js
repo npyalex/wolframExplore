@@ -110,6 +110,7 @@ console.log(inMessage);  //log the entire response
         ellipseMode(CENTER);
         rectMode(CENTER);
         noStroke();
+        background(230);
 
 
     // cycle through the returned answer 1000 times or until the string ends
