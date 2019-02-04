@@ -22,6 +22,11 @@ var cSizeX = 900;
 var cSizeY = 600;
 
 var returnedAnswer = [];
+var p = [];
+var randNumber = [];
+
+var howManyToAsk = 1000; //change this to get more numbers
+var bitsToAsk = 8; //can be 8 or 16
 
 //This must match the channel you set up in your function
 var channelName = "wolfram";
@@ -31,6 +36,22 @@ function setup()
   getAudioContext().resume();
   createCanvas(cSizeX, cSizeY);
   background(255);
+//    var askurl = "https://qrng.anu.edu.au/API/jsonI.php?length="+howManyToAsk+"&type=uint"+bitsToAsk;
+//
+//loadJSON(askurl,whatHappened);
+//
+//    function whatHappened(returnData)
+//{
+//console.log(returnData);  //look in the console to see the structure of the returned message
+//
+//
+//	for(var i=0;i<returnData.data.length;i++)
+//	{
+//       randNumber[i] = returnData.data[i],returnData.data[i];
+//	}
+//
+//
+//}
   
   
 
@@ -58,8 +79,7 @@ function setup()
 
 function draw() 
 {
-
-
+    
 }
 
 
@@ -83,16 +103,14 @@ function readIncoming(inMessage) //when new data comes in it triggers this funct
 {                               // this works becsuse we subscribed to the channel in setup()
   
 
+    
 console.log(inMessage);  //log the entire response
                           //the message parameter to look for is answer
 
+        ellipseMode(CENTER);
+        rectMode(CENTER);
+        background(255);
 
-    background(255);
-    noStroke();
-    fill(0);  //read the color values from the message
-    textSize(20);
-    text(inMessage.message.answer, 5, height/2);
-    //returnedAnswer=inMessage.message.answer.split(" ");
 
     // cycle through the returned answer 1000 times or until the string ends
     // whichever comes first
@@ -103,7 +121,14 @@ console.log(inMessage);  //log the entire response
             }
     // print the UTC-16 code of each character in the answer
       //console.log(inMessage.message.answer.charCodeAt(i));
-      returnedAnswer[i]=inMessage.message.answer.charCodeAt(i);
+        returnedAnswer[i]=inMessage.message.answer.charCodeAt(i);
+          let r = random(0,5);
+        p[i] = returnedAnswer[i];
         console.log(returnedAnswer[i]);
-    }
+        fill(p[i],p[i+1],p[i+2]);
+        rect((r*p[i]),(r*p[i+1],p[i+2],p[i+3]));
+        ellipse((r*p[i+3]),(r*p[i+4]),p[i+5]);
+        }
 }
+
+
