@@ -109,7 +109,7 @@ console.log(inMessage);  //log the entire response
 
         ellipseMode(CENTER);
         rectMode(CENTER);
-        background(255);
+        noStroke();
 
 
     // cycle through the returned answer 1000 times or until the string ends
@@ -122,12 +122,13 @@ console.log(inMessage);  //log the entire response
     // print the UTC-16 code of each character in the answer
       //console.log(inMessage.message.answer.charCodeAt(i));
         returnedAnswer[i]=inMessage.message.answer.charCodeAt(i);
-          let r = random(0,5);
+          let r = random(0,10);
         p[i] = returnedAnswer[i];
         console.log(returnedAnswer[i]);
+        translate(r,r);
         fill(p[i],p[i+1],p[i+2]);
-        rect((r*p[i]),(r*p[i+1],p[i+2],p[i+3]));
-        ellipse((r*p[i+3]),(r*p[i+4]),p[i+5]);
+        rect(r*p[i+1],r*p[i+2],p[i+2],p[i+3]);
+        ellipse(r*p[i+2],r*p[i+1],p[i+2],p[i+3]);
         }
 }
 
