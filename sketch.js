@@ -19,7 +19,7 @@ var sendButton;
 
 //size of the active area
 var cSizeX = 900;
-var cSizeY = 600;
+var cSizeY = 800;
 
 var returnedAnswer = [];
 var p = [];
@@ -120,7 +120,7 @@ console.log(inMessage);  //log the entire response
             {
                 break;
             }
-    // print the UTC-16 code of each character in the answer
+    // print the UTF-16 code of each character in the answer
       //console.log(inMessage.message.answer.charCodeAt(i));
         returnedAnswer[i]=inMessage.message.answer.charCodeAt(i);
           let r = random(0,10);
@@ -133,4 +133,7 @@ console.log(inMessage);  //log the entire response
         }
 }
 
-
+function windowResized()
+{
+    resizeCanvas(cSizeX,cSizeY)
+}
